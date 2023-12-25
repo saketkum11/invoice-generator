@@ -1,13 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAction, createSlice } from "@reduxjs/toolkit";
 const initialState = {
   invoiceList: [],
-  name: {
-    id: "jksdhfsjd",
-  },
 };
+const invoice = createAction("");
 const invoiceSlice = createSlice({
   name: "invoice",
   initialState,
-  reducers: {},
+  reducers: {
+    createInvoice: (state, action) => {
+      console.log(action);
+      state.invoiceList.push(action);
+    },
+  },
 });
+export const { createInvoice } = invoiceSlice.actions;
 export default invoiceSlice.reducer;
